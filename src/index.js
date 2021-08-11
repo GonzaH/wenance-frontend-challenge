@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import configureStore from './redux/store';
 
 import Page from './Components/Organisms/Page';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={configureStore()}>
     <Page />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById("root")
 );

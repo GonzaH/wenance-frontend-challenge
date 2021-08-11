@@ -1,6 +1,6 @@
 {
   "name": "wenance-frontend-challenge",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Coding challenge for Wenance.",
   "main": "index.js",
   "scripts": {
@@ -18,11 +18,16 @@
     "url": "https://github.com/GonzaH/wenance-frontend-challenge/issues"
   },
   "dependencies": {
+    "@babel/runtime": "7.15.3",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-redux": "7.1.0",
+    "redux": "4.1.1",
+    "redux-thunk": "2.3.0"
   },
   "devDependencies": {
     "@babel/core": "7.14.6",
+    "@babel/plugin-transform-runtime": "7.15.0",
     "@babel/preset-env": "7.14.7",
     "@babel/preset-react": "7.14.5",
     "babel-loader": "8.2.2",
