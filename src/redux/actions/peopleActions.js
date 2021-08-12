@@ -7,7 +7,7 @@ export const savePeople = ({ next, results }) => (dispatch) => {
 };
 
 // I think that, since the url has the internal id/index, it will be unique
-// while I don't have any guarantee that the name is
+// while I don't have any guarantee that the name is.
 export const removePerson = (url) => (dispatch) => {
   dispatch(storeData(REMOVE_PERSON, url));
 };

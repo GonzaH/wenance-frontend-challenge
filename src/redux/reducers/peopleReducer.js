@@ -8,26 +8,48 @@ const getNextPage = (next) => {
   const [, nextPage] = next.split('page=');
 
   return nextPage;
-}
+};
+
+const receivePeople = (state, { people, next }) => {
+  const { people: currentPeople = [], filteredPeople = [] } = state;
+
+  const allPeople = [...currentPeople, ...people];
+  const allFilteredPeople = [...filteredPeople, ...people];
+
+  return Object.assign(
+    {},
+    state,
+    { people: allPeople, next: getNextPage(next), filteredPeople: allFilteredPeople }
+  );
+};
+
+const removePerson = (state, selectedUrl) => {
+  const { people, filteredPeople } = state;
+
+  const urlFilter = (({ url }) => url !== selectedUrl);
+
+  const peopleToKeep = people.filter(urlFilter);
+  const filteredPeopleToKeep = filteredPeople.filter(urlFilter);
+
+  return Object.assign({}, state, { people: peopleToKeep, filteredPeople: filteredPeopleToKeep });
+};
+
+const applyFilter = (state, filterContent) => {
+  const { people } = state;
+
+  const filteredPeople = people.filter(({ name }) => name.toLowerCase().includes(filterContent));
+
+  return Object.assign({}, state, { filteredPeople });
+};
 
 const peopleReducer = (state = initialState, { type, data }) => {
   switch (type) {
     case RECEIVE_PEOPLE:
-      const { people, next } = data;
-
-      return Object.assign({}, state, { people, next: getNextPage(next), filteredPeople: people });
+      return receivePeople(state, data);
     case REMOVE_PERSON:
-      const { people: allPeople } = state;
-
-      const peopleToKeep = allPeople.filter(({ url }) => url !== data);
-
-      return Object.assign({}, state, { people: peopleToKeep });
+      return removePerson(state, data);
     case APPLY_FILTER:
-      const { people: nonFilteredPeople } = state;
-
-      const filteredPeople = nonFilteredPeople.filter(({ name }) => name.toLowerCase().includes(data));
-
-      return Object.assign({}, state, { filteredPeople });
+      return applyFilter(state, data);
     default:
       return state;
   }
