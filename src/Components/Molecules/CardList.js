@@ -14,6 +14,11 @@ const Div = styled.div`
   }
 `;
 
+const LoadingDiv = styled.div`
+  width: 100%;
+  display: flex;
+`;
+
 const Img = styled.img`
   width: 10em;
   heigth: 10em;
@@ -25,7 +30,7 @@ const Img = styled.img`
 const CardList = ({ loading }) => {
   const people = useSelector(({ filteredPeople }) => filteredPeople, shallowEqual);
 
-  if (loading) return <Img src={Loading} alt="Loading" />;
+  if (loading) return <LoadingDiv><Img src={Loading} alt="Loading" /></LoadingDiv>;
 
   return (<Div>
     {people.map(({ name, url, hair_color, birth_year }) => <Card
