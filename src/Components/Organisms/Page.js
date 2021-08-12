@@ -3,7 +3,7 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 
 import { getPeople } from '../../utils/apiCalls/swapi';
 import { savePeople } from '../../redux/actions/peopleActions';
-import Filter from '../Molecules/Filter';
+import Filter from '../Atoms/Filter';
 
 const Page = () => {
   const [currentPage, setCurrentPage] = useState(1);

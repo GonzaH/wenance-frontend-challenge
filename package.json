@@ -1,6 +1,6 @@
 {
   "name": "wenance-frontend-challenge",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Coding challenge for Wenance.",
   "main": "index.js",
   "scripts": {
